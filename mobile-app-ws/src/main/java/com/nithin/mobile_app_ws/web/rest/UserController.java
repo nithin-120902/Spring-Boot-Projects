@@ -1,6 +1,7 @@
 package com.nithin.mobile_app_ws.web.rest;
 
 import com.nithin.mobile_app_ws.domain.User;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,7 +15,12 @@ public class UserController {
         return "get users was called with page = " + page + " and limit = " + limit + " and sort is "+sort;
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping(value = "/{userId}",
+            produces = {
+                MediaType.APPLICATION_XML_VALUE,
+                MediaType.APPLICATION_JSON_VALUE
+            }
+    )
     public User getUser(@PathVariable String userId){
         User returnValue = new User();
         returnValue.setFirstName("Nithin Krishna");
