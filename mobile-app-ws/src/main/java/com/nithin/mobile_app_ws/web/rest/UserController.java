@@ -1,7 +1,9 @@
 package com.nithin.mobile_app_ws.web.rest;
 
 import com.nithin.mobile_app_ws.domain.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,13 +23,15 @@ public class UserController {
                 MediaType.APPLICATION_JSON_VALUE
             }
     )
-    public User getUser(@PathVariable String userId){
+    public ResponseEntity<User> getUser(@PathVariable String userId){
+
         User returnValue = new User();
         returnValue.setFirstName("Nithin Krishna");
         returnValue.setLastNAme("Venna");
         returnValue.setEmail("vnithin1209@gmail.com");
         returnValue.setUserId(userId);
-        return returnValue;
+
+        return new ResponseEntity<User>(returnValue,HttpStatus.OK);
     }
 
     @PostMapping
