@@ -1,5 +1,6 @@
 package com.nithin.mobile_app_ws.web.rest;
 
+import com.nithin.mobile_app_ws.domain.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,8 +15,13 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public String getUser(@PathVariable String userId){
-        return "get user was called by Id="+userId;
+    public User getUser(@PathVariable String userId){
+        User returnValue = new User();
+        returnValue.setFirstName("Nithin Krishna");
+        returnValue.setLastNAme("Venna");
+        returnValue.setEmail("vnithin1209@gmail.com");
+        returnValue.setUserId(userId);
+        return returnValue;
     }
 
     @PostMapping
